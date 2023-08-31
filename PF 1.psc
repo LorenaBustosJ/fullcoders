@@ -5,7 +5,10 @@ Algoritmo CargaProductos
 	Dimension horas[2] 
 	Definir diaElegido, horaElegida como cadena
 	Definir opcionMenu, cantTurno como Entero
-	
+
+
+
+
 	// Para catalogo
 	Dimension productos[10]
 	Definir cantidadProductos como Entero
