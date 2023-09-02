@@ -1,100 +1,117 @@
-Algoritmo RegistroAlumnos
-	Escribir " " ;
-	Escribir " ########################################## "
-	Escribir "---------------- Agencia de Viajes ------------------"
-	Escribir "----------------- FAROBENO VIAJES -------------------"
-	Escribir "##########################################"
-	Escribir " ";
-	Escribir "-------------------------- Menú Principal ---------------------"
-	Escribir "---Elija el número de la opción que necesita--- ";
-	
-	Escribir "¿Cuantas clases dura su materia?"
+Algoritmo PlataformaProfesional
+	Escribir ' '
+	Escribir '------------------------------- DATOS BASE -------------------------'
+	Escribir '¿Cuantas clases dura su materia?'
 	Leer t
-	Escribir "¿Cuantos alumnos cursan su materia?"
+	Escribir '¿Cuantos alumnos cursan su materia?'
 	Leer n
-
-	Dimension nombre[n]
-	Dimension nota[n]
-	Dimension asist[n]
-	
-	Para i <- 1	Hasta n  Hacer
-		Escribir "Ingrese el nombre del alumno :" i 
+	Escribir '--------------------------------------------------------------------'
+	Escribir ' '
+	Dimensionar nombre(n)
+	Dimensionar nota(n)
+	Dimensionar asist(n)
+	Escribir ' '
+	Escribir '---------------------- DATOS DE PROMOCION -------------------------'
+	Escribir '¿Cual es la asistencia mínima para promocionar la materia?'
+	Leer asistmin
+	Escribir '¿Cuantos parciales va a tomar a lo largo de la cursada?'
+	Leer numparc
+	Escribir '¿Con qué promedio el alumno promociona la materia?'
+	Leer calprom
+	Escribir '--------------------------------------------------------------------'
+	Escribir ' '
+	Escribir ' '
+	Escribir '-------------------- DATOS DE LOS ', n, ' ALUMNOS---------------------'
+	Para i<-1 Hasta n Hacer
+		Escribir 'Ingrese el nombre del alumno :', i
 		Leer nombre[i]
-	Fin Para
-	
+	FinPara
+	Escribir '--------------------------------------------------------------------'
+	Escribir ' '
 	Repetir
-		Escribir "------------------------------- MENÚ PRINCIPAL -------------------------"
-		escribir "Que desea hacer?"
-		escribir "1. Verificar asistencia"
-		escribir "2. Verificar promedio"
-		escribir "3. Ver cuantos alumnos cargó y sus respectvas verificaciones"
-		escribir "4. Salir"
-		Escribir "------------- Elija el número de la opción que necesita ----------------"
+		Escribir '------------------------------- MENÚ PRINCIPAL -------------------------'
+		Escribir 'Que desea hacer?'
+		Escribir '1. Verificar asistencia'
+		Escribir '2. Verificar promedio'
+		Escribir '3. Ver cuantos alumnos cargó y sus respectvas verificaciones'
+		Escribir '4. Salir'
+		Escribir '------------- Elija el número de la opción que necesita ----------------'
 		Leer menuPrincipal
-		
 		// verificar asistencia
 		Si menuPrincipal=1 Entonces
-			Escribir "De qué alumno quiere verificar su asistencia?"
-			Leer nombrealumno
+			Escribir 'De qué alumno quiere verificar su asistencia?'
+			Leer nomalum
 			i <- 1
-			Mientras nombrealumno <> nombre[i] Hacer
-				i=i+1				
-			Fin Mientras
-			Escribir "Ingrese el total de faltas del alumno : " nombre[i]
+			Mientras nomalum<>nombre[i] Hacer
+				i <- i+1
+			FinMientras
+			Escribir 'Ingrese el total de faltas del alumno : ', nombre[i]
 			Leer f
 			asist[i] <- (((t-f)/t)*100)
-			Si asist[i] >= 80 Entonces
-				Escribir "-------------------------------------------------------------------------"
-				Escribir "El alumno " nombre[i] " cumple con el 80% de las asistencias a clases,con una asistencia total del " asist[i] " %."
-				Escribir "-------------------------------------------------------------------------"
+			Si asist[i]>=(asistmin*10) Entonces
+				Escribir ' '
+				Escribir '-------------------------------------------------------------------------'
+				Escribir 'El alumno ', nombre[i], ' cumple con la asistencias a clases, con una asistencia total del ', asist[i], ' %.'
+				Escribir '-------------------------------------------------------------------------'
+				Escribir ' '
 			SiNo
-				Escribir "-------------------------------------------------------------------------"
-				Escribir "El alumno " nombre[i] " NO cumple con las asistencias mínimas a clases,con una asistencia total del " asist[i] " %."
-				Escribir "-------------------------------------------------------------------------"
-			Fin Si
-		FinSi		
-		
-		//verificar promedio
+				Escribir ' '
+				Escribir '-------------------------------------------------------------------------'
+				Escribir 'El alumno ', nombre[i], ' NO cumple con las asistencias mínimas a clases, con una asistencia total del ', asist[i], ' %.'
+				Escribir '-------------------------------------------------------------------------'
+				Escribir ' '
+			FinSi
+		FinSi
+		// verificar promedio
 		Si menuPrincipal=2 Entonces
-			Escribir "Ingrese el nombre del alumno del que desea calcular el promedio: ";
+			Escribir 'Ingrese el nombre del alumno del que desea calcular el promedio: '
 			Leer nombrealumno
 			i <- 1
-			Mientras nombrealumno <> nombre[i] Hacer
-				i=i+1
-			Fin Mientras
-			Escribir "Ingrese la nota del primer parcial del alumno " nombre[i] "."
-			Leer n1
-			Escribir "Ingrese la nota del segundo parcial del alumno " nombre[i] "."
-			Leer n2
-			Escribir "Ingrese la nota del tercer parcial del alumno " nombre[i] "."
-			Leer n3
-			nota[i] = (n1+n2+n3)/3
-			Si nota[i] >=8 Entonces
-				Escribir "-------------------------------------------------------------------------"
-				Escribir "El alumno " nombre[i] ", promocionó la materia. Con una nota final de " nota[i] "."
-				Escribir "-------------------------------------------------------------------------"
+			Mientras nombrealumno<>nombre[i] Hacer
+				i <- i+1
+			FinMientras
+			Para x<-1 Hasta numparc Hacer
+				Escribir 'Ingrese la nota del parcial número ', x, ' del alumno ', nombre[i], '.'
+				Leer nx
+				sumnot <- sumnot+nx
+			FinPara
+			nota[i] <- (sumnot)/numparc
+			Si nota[i]>=calprom Entonces
+				Escribir ' '
+				Escribir '-------------------------------------------------------------------------'
+				Escribir 'El alumno ', nombre[i], ', promocionó la materia. Con una nota final de ', nota[i], '.'
+				Escribir '-------------------------------------------------------------------------'
+				Escribir ' '
 			SiNo
-				Si nota[i] <6 Entonces
-					Escribir "-------------------------------------------------------------------------"
-					Escribir "El alumno " nombre[i] ", debe recursar la materia. Con una nota final de " nota[i] "."
-					Escribir "-------------------------------------------------------------------------"
+				Si nota[i]<6 Entonces
+					Escribir ' '
+					Escribir '-------------------------------------------------------------------------'
+					Escribir 'El alumno ', nombre[i], ', debe recursar la materia. Con una nota final de ', nota[i], '.'
+					Escribir '-------------------------------------------------------------------------'
+					Escribir ' '
 				SiNo
-					Escribir "-------------------------------------------------------------------------"
-					Escribir "El alumno " nombre[i] ", está en condicion intermedia. Con una nota final de " nota[i] "."
-					Escribir "-------------------------------------------------------------------------"
-				Fin Si
-			Fin Si
-		Fin Si
-		
-		//Ver los cargados al sistema
-		Si menuPrincipal=3 Entonces
-			i <- 1
-			Mientras asist[i] <> null o nota[i]  <> null Hacer
-				Escribir "El alumno " nombre[i] ", tiene una asitencia del: " asist[i] " y un promedio de: " nota[i] "."
-				Escribir ""
-				i = i+ 1
-			Fin Mientras
+					Escribir ' '
+					Escribir '-------------------------------------------------------------------------'
+					Escribir 'El alumno ', nombre[i], ', está en condicion intermedia. Con una nota final de ', nota[i], '.'
+					Escribir '-------------------------------------------------------------------------'
+					Escribir ' '
+				FinSi
+			FinSi
 		FinSi
-		
+		// Ver los cargados al sistema
+		Si menuPrincipal=3 Entonces
+			Para i<-1 Hasta n Hacer
+				Escribir ' '
+				Escribir 'El alumno ', nombre[i], ', tiene una asitencia del: ', asist[i], '% del total de ', (asistmin*10), ' %, y un promedio de: ', nota[i], '.'
+				Escribir ' '
+			FinPara
+		FinSi
 	Hasta Que menuPrincipal=4
 FinAlgoritmo
+
+// Mientras asist[i] <> null O nota[i] <> null Hacer
+// Escribir " " 
+// Escribir "El alumno " nombre[i] ", tiene una asitencia del: " asist[i] "% del total de " (asistmin*10) " %, y un promedio de: " nota[i] "."
+// Escribir " "
+// i = i + 1
+// Fin Mientras
