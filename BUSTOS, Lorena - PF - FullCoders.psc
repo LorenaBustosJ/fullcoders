@@ -1,9 +1,9 @@
 Algoritmo PlataformaProfesional
 	Escribir ' '
 	Escribir '------------------------------- DATOS BASE -------------------------'
-	Escribir '¿Cuantas clases dura su materia?'
+	Escribir 'Â¿Cuantas clases dura su materia?'
 	Leer t
-	Escribir '¿Cuantos alumnos cursan su materia?'
+	Escribir 'Â¿Cuantos alumnos cursan su materia?'
 	Leer n
 	Escribir '--------------------------------------------------------------------'
 	Escribir ' '
@@ -12,11 +12,11 @@ Algoritmo PlataformaProfesional
 	Dimensionar asist(n)
 	Escribir ' '
 	Escribir '---------------------- DATOS DE PROMOCION -------------------------'
-	Escribir '¿Cual es la asistencia mínima para promocionar la materia?'
+	Escribir 'Â¿Cual es la asistencia mÃ­nima para promocionar la materia?'
 	Leer asistmin
-	Escribir '¿Cuantos parciales va a tomar a lo largo de la cursada?'
+	Escribir 'Â¿Cuantos parciales va a tomar a lo largo de la cursada?'
 	Leer numparc
-	Escribir '¿Con qué promedio el alumno promociona la materia?'
+	Escribir 'Â¿Con quÃ© promedio el alumno promociona la materia?'
 	Leer calprom
 	Escribir '--------------------------------------------------------------------'
 	Escribir ' '
@@ -29,17 +29,17 @@ Algoritmo PlataformaProfesional
 	Escribir '--------------------------------------------------------------------'
 	Escribir ' '
 	Repetir
-		Escribir '------------------------------- MENÚ PRINCIPAL -------------------------'
+		Escribir '------------------------------- MENÃš PRINCIPAL -------------------------'
 		Escribir 'Que desea hacer?'
 		Escribir '1. Verificar asistencia'
 		Escribir '2. Verificar promedio'
-		Escribir '3. Ver cuantos alumnos cargó y sus respectvas verificaciones'
+		Escribir '3. Ver cuantos alumnos cargÃ³ y sus respectvas verificaciones'
 		Escribir '4. Salir'
-		Escribir '------------- Elija el número de la opción que necesita ----------------'
+		Escribir '------------- Elija el nÃºmero de la opciÃ³n que necesita ----------------'
 		Leer menuPrincipal
 		// verificar asistencia
 		Si menuPrincipal=1 Entonces
-			Escribir 'De qué alumno quiere verificar su asistencia?'
+			Escribir 'De quÃ© alumno quiere verificar su asistencia?'
 			Leer nomalum
 			i <- 1
 			Mientras nomalum<>nombre[i] Hacer
@@ -57,7 +57,7 @@ Algoritmo PlataformaProfesional
 			SiNo
 				Escribir ' '
 				Escribir '-------------------------------------------------------------------------'
-				Escribir 'El alumno ', nombre[i], ' NO cumple con las asistencias mínimas a clases, con una asistencia total del ', asist[i], ' %.'
+				Escribir 'El alumno ', nombre[i], ' NO cumple con las asistencias mÃ­nimas a clases, con una asistencia total del ', asist[i], ' %.'
 				Escribir '-------------------------------------------------------------------------'
 				Escribir ' '
 			FinSi
@@ -71,7 +71,7 @@ Algoritmo PlataformaProfesional
 				i <- i+1
 			FinMientras
 			Para x<-1 Hasta numparc Hacer
-				Escribir 'Ingrese la nota del parcial número ', x, ' del alumno ', nombre[i], '.'
+				Escribir 'Ingrese la nota del parcial nÃºmero ', x, ' del alumno ', nombre[i], '.'
 				Leer nx
 				sumnot <- sumnot+nx
 			FinPara
@@ -79,7 +79,7 @@ Algoritmo PlataformaProfesional
 			Si nota[i]>=calprom Entonces
 				Escribir ' '
 				Escribir '-------------------------------------------------------------------------'
-				Escribir 'El alumno ', nombre[i], ', promocionó la materia. Con una nota final de ', nota[i], '.'
+				Escribir 'El alumno ', nombre[i], ', promocionÃ³ la materia. Con una nota final de ', nota[i], '.'
 				Escribir '-------------------------------------------------------------------------'
 				Escribir ' '
 			SiNo
@@ -92,7 +92,7 @@ Algoritmo PlataformaProfesional
 				SiNo
 					Escribir ' '
 					Escribir '-------------------------------------------------------------------------'
-					Escribir 'El alumno ', nombre[i], ', está en condicion intermedia. Con una nota final de ', nota[i], '.'
+					Escribir 'El alumno ', nombre[i], ', estÃ¡ en condicion intermedia. Con una nota final de ', nota[i], '.'
 					Escribir '-------------------------------------------------------------------------'
 					Escribir ' '
 				FinSi
@@ -108,10 +108,3 @@ Algoritmo PlataformaProfesional
 		FinSi
 	Hasta Que menuPrincipal=4
 FinAlgoritmo
-
-// Mientras asist[i] <> null O nota[i] <> null Hacer
-// Escribir " " 
-// Escribir "El alumno " nombre[i] ", tiene una asitencia del: " asist[i] "% del total de " (asistmin*10) " %, y un promedio de: " nota[i] "."
-// Escribir " "
-// i = i + 1
-// Fin Mientras
